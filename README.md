@@ -91,9 +91,3 @@ snake-vulkan/
 
 ---
 
-## Extending
-
-- **Score HUD** — render a bitmap-font atlas into a texture and sample it in a new shader mode
-- **Particles** — emit small additive quads from the snake head each step
-- **Compute shader** — move fire FBM to a compute pass and sample a texture in the fragment shader (better for high frame-rates)
-- **Sound** — SDL_mixer 3 can be added alongside SDL3
