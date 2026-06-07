@@ -49,14 +49,14 @@ FetchContent_Declare(VulkanMemoryAllocator
 )
 
 # #glm
-# FetchContent_Declare(glm
-#   GIT_REPOSITORY   https://github.com/g-truc/glm.git
-#   GIT_TAG          master
-#   GIT_SHALLOW      TRUE
-# )
+FetchContent_Declare(glm
+  GIT_REPOSITORY   https://github.com/g-truc/glm.git
+  GIT_TAG          master
+  GIT_SHALLOW      TRUE
+)
 
 # FetchContent_MakeAvailable(SDL3 fmt vkbootstrap VulkanMemoryAllocator glm)
-FetchContent_MakeAvailable(SDL3 fmt vkbootstrap VulkanMemoryAllocator)
+FetchContent_MakeAvailable(SDL3 fmt vkbootstrap VulkanMemoryAllocator glm)
 
 
 
@@ -105,7 +105,7 @@ target_link_libraries(SnakeVulkan PRIVATE
   fmt::fmt
   vk-bootstrap::vk-bootstrap
   GPUOpen::VulkanMemoryAllocator
-  # glm
+  glm::glm
 )
 
 # Copy shaders next to the binary
