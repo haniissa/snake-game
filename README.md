@@ -36,15 +36,18 @@ cd snake-vulkan
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel
 
-./build/SnakeVulkan          # Linux / macOS
-build\Release\SnakeVulkan.exe  # Windows
+cd /build
+./SnakeVulkan          # Linux / macOS
+cd build\Release  #Windows
+.\SnakeVulkan.exe  # Windows
 ```
 
 ### Debug build (validation layers enabled)
 ```bash
 cmake -B build-dbg -DCMAKE_BUILD_TYPE=Debug
 cmake --build build-dbg
-./build-dbg/SnakeVulkan
+cd ./build-dbg
+./SnakeVulkan
 ```
 
 ---
@@ -84,24 +87,7 @@ snake-vulkan/
 
 ---
 
-## Shader modes (push constants)
 
-The single `quad.frag` shader handles all draw modes via the `mode` field
-in the push-constant block:
-
-| `mode` | Effect | Pipeline |
-|--------|--------|----------|
-| `0` Solid | Rounded rectangle with SDF rounding | Alpha-blend |
-| `1` Fire  | FBM noise, height mask, animated upward | Additive |
-| `2` Shadow | Soft elliptical gradient | Alpha-blend |
-| `3` Circle | SDF circle with pulsing glow + specular | Alpha-blend |
-
-### Fire technical notes
-The fire uses 5-octave fractional Brownian motion (FBM) animated by
-`time` in the push constants. A height mask (`1 - uv.y`) makes the base
-hot and the top transparent, and a sine-based horizontal sway makes
-each flame unique. The additive pipeline means fire colour *adds* to
-whatever is behind it — darker backgrounds produce more vivid glow.
 
 ---
 
